@@ -1,9 +1,19 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
+let express = require('express');
+
+let app = express();
 
 console.log(process.env.MONGO_URI);
 
 //mongoose.connect([process.env.MONGO_URI], {useNewUrlParser: true, useUnifiedTopology: true })
+let homePage = __dirname + '/views/index.html'
+
+//output index.html at '/' route
+app.get('/', (req, res) => {
+  res.sendFile(homePage);
+})
+
 
 let Person;
 
